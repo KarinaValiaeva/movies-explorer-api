@@ -32,9 +32,8 @@ module.exports.login = (req, res, next) => {
       res.status(200).send({ token });
     })
     .catch(() => {
-      throw new UnauthorizedError(UNAUTHORIZED_ERR_MSG);
-    })
-    .catch(next);
+      next(new UnauthorizedError(UNAUTHORIZED_ERR_MSG));
+    });
 };
 
 module.exports.createUser = (req, res, next) => {
@@ -89,16 +88,19 @@ module.exports.updateUserProfile = (req, res, next) => {
       runValidators: true,
     },
   )
+    .orFail(new NotFoundError(USER_NOT_FOUND))
     .then((user) => res.send({
       name: user.name,
       email: user.email,
     }))
     .catch((err) => {
-      if (err.name === VALIDATION_ERR_NAME) {
-        throw new BadRequestError(ERR_MSG);
-      } else {
-        throw new NotFoundError(USER_NOT_FOUND);
+      if (err.name === MONGO_ERR_NAME && err.code === MONGO_ERR_CODE) {
+        next(new ConflictingRequest(CONFLICTING_REQUEST_MSG));
       }
-    })
-    .catch(next);
+      if (err.name === VALIDATION_ERR_NAME) {
+        next(new BadRequestError(ERR_MSG));
+      } else {
+        next(err);
+      }
+    });
 };

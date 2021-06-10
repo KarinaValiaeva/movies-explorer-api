@@ -69,11 +69,12 @@ const validateSignup = celebrate({
       'string.min': VALIDATION_PASS_MSG,
       'any.required': REQUIRED_MSG_PASS,
     }),
-    name: Joi.string().min(2).max(30).messages({
-      'string.min': VALIDATON_NAME_MIN_MSG,
-      'string.max': VALIDATON_NAME_MAX_MSG,
-      'any.required': REQUIRED_MSG_NAME,
-    }),
+    name: Joi.string().required().min(2).max(30)
+      .messages({
+        'string.min': VALIDATON_NAME_MIN_MSG,
+        'string.max': VALIDATON_NAME_MAX_MSG,
+        'any.required': REQUIRED_MSG_NAME,
+      }),
   }),
 });
 
