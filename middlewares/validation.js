@@ -133,16 +133,14 @@ const validateCreateMovie = celebrate({
       .messages({
         'any.required': REQUIRED_MSG_THUMBNAIL,
       }),
-    nameRU: Joi.string().required().min(2).max(30)
+    nameRU: Joi.string().required().min(2)
       .messages({
         'string.min': VALIDATON_NAME_RU_MIN_MSG,
-        'string.max': VALIDATON_NAME_RU_MAX_MSG,
         'any.required': REQUIRED_MSG_NAME_RU,
       }),
-    nameEN: Joi.string().required().min(2).max(30)
+    nameEN: Joi.string().required().min(2)
       .messages({
         'string.min': VALIDATON_NAME_EN_MIN_MSG,
-        'string.max': VALIDATON_NAME_EN_MAX_MSG,
         'any.required': REQUIRED_MSG_NAME_EN,
       }),
     movieId: Joi.number().required().messages({
