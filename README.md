@@ -9,28 +9,34 @@ Backend для сервиса поиска документальных филь
 
 ### Установка необходимого ПО
 
-```npm install```
-```npm install nodemon -D```
-```npm install express```
-```npm install mongoose```
-```npm install bcryptjs```
-```npm install celebrate```
-```npm install cors```
-```npm install dotenv```
-```npm install winston```
-```npm install express-winston```
-```npm install helmet```
-```npm install jsonwebtoken```
-```npm install validator```
-```npm install express-rate-limit```
+```
+npm install
+npm install nodemon -D
+npm install express
+npm install mongoose
+npm install bcryptjs
+npm install celebrate
+npm install cors
+npm install dotenv
+npm install winston
+npm install express-winston
+npm install helmet
+npm install jsonwebtoken
+npm install validator
+npm install express-rate-limit 
+```
 
 ### Запуск проекта
 
-```npm start```
+```
+npm start
+```
 
 ##### Запуск проекта в режине разработки 
 
-```npm run dev```
+```
+npm run dev
+```
 
 ### Сервер
 
